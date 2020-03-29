@@ -49,12 +49,10 @@ class AllSnapsScores():
         self.length = length
 
 class Instructions():
-    def __init__(self,a = "Ratio",b= "Pitch", c = "Highest",d = [i for i in range(16)],e = {"Attack":1,"Sustain":1}):
-        self.analysisTechnique = a #Mathematical approach
-        self.targetMidiData = b #What type of data you want to compare
-        self.seekType = c #
-        self.harmonicProgression = d #list of harmonic progressions duration
-        ieAD = e["Attack"]
-        ieRS = e["Sustain"]
-        self.NoteOnRatio = (ieAD/ieRS)/(ieAD+ieRS)
-        self.NoteSusRatio = (ieRS/ieAD)/(ieAD+ieRS)
+    scoringMethod = "Average"
+    targetMidiData = "Pitch"
+    analysisCriteria = "Highest"
+    harmonicProgression = range(16)
+    noteOnRatio = 0.5
+    noteSusRatio = 0.5
+       

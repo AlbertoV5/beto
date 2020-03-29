@@ -4,6 +4,7 @@ Main Module with General Functions
 import beto_analysis as an
 import beto_util as util
 import beto_classes as obj
+import beto_snaps as snap
 
 ##------- READING ---------##
 
@@ -15,27 +16,24 @@ def ReadMidi(path,resolution,plotting):
     return util.StoreCSV(path,resolution,plotting)
 
 def GetSnapsInBars(midiSections,grid):
-    return an.GetAllSnapsInBars(midiSections,grid)
+    return snap.GetAllSnapsInBars(midiSections,grid)
 
 def DefineGrid(section,repetition,bar,beat,unit,midiResolution):
     return obj.Grid(section,repetition,bar,beat,unit,midiResolution)
 
-def DefineInstructions(a = "Ratio",b= "Pitch", c = "Highest",d = [i for i in range(16)],e = {"Attack":1,"Sustain":1}):
-    return obj.Instructions(a,b,c,d,e)
+def DefineInstructions():
+    return obj.Instructions()
 
 ##------- CALL FOR ANALYSIS FUNCTIONS ---------##
 def Compare_ReferenceBar_to_AllBars(grid,referenceBar,allBars,inputSectionSelection,outputSections,info):
     outputBars, bannedBars = [],[]
-    barsSelection = range(0,grid.size_inBars_section) #INCLUDE ALL
-    barsSelection = info.harmonicProgression
     outputLengthInBars = range(0,(outputSections-1)*grid.size_inBars_section)
 
-    if info.analysisTechnique == "Percentage": 
-        for i in outputLengthInBars:
-            newBarData = an.LookForBestBar(allBars,inputSectionSelection,barsSelection,referenceBar,bannedBars,info)
-            outputBars.append(newBarData) 
-            referenceBar = newBarData[1]
-            bannedBars.append(newBarData[2])
+    for i in outputLengthInBars:
+        newBarData = an.LookForBestBar(allBars,inputSectionSelection,info.harmonicProgression,referenceBar,bannedBars,info)
+        outputBars.append(newBarData) 
+        referenceBar = newBarData[1]
+        bannedBars.append(newBarData[2])
             
     return outputBars
 
@@ -59,4 +57,4 @@ def CreateNewMidi(BarList,grid,resolution,name,path,plotting):
         util.PlotPiece(newMidiFile[0],newMidiFile[1],plotting[1]+"/",plotting[2])
     util.WriteCSV(newMidiFile,name,path)
    
-        
+    

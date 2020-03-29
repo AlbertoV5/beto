@@ -8,6 +8,9 @@ import math
 
 ##------- MATH FUNCTIONS ---------##
 
+def average(data):
+    return float(sum(data))/float(len(data))
+
 def Round(v,typ,dec):
     if typ == "floor":
         return math.floor((10**dec)*(v))/(10**dec)
@@ -23,7 +26,40 @@ def Normalize(num,unitsInBar,barsInSection,result=0): #
         else:
             result = num
     return result
-  
+
+##----------- EVALUATION FUNCTIONS -------------##    
+
+def GetTargetMidiData_Scores(target,pitch,pos,vel,length):
+    if target == "Position":
+        return [pos,pos]
+    elif target == "Velocity":
+        return [vel,vel]
+    elif target == "Pitch":
+        return [pitch,pitch]
+    elif target == "Length":
+        return [length,length]
+    elif target == "No Pitch":
+        return [pos,vel,length]
+    elif target == "No Position":
+        return [pitch,vel,length]
+    elif target == "No Velocity":
+        return [pitch,pos,length]
+    elif target == "No Length":
+        return [pitch,pos,length]
+    elif target == "PosLen":
+        return [pos,length]
+    elif target == "PosPitch":
+        return [pos,pitch]
+    elif target == "PosVel":
+        return [pos,vel]
+    elif target == "PitchVel":
+        return [pitch,vel]
+    elif target == "PitchLen":
+        return [pitch,length]
+    elif target == "VelLen":
+        return [vel,length]
+    else:
+        return [pos,vel,pitch,length]
 ##------- DATA MANAGEMENT FUNCTIONS ---------##
 
 def gcd():
@@ -36,7 +72,7 @@ def GetFiles(directory):
     return sorted(files)
 
 def WriteCSV(newMidi,name,path): 
-    d = {'Pitch': newMidi[1],'Velocity': newMidi[2],'Position': newMidi[0],"Length": newMidi[3]}
+    d = {'Pitch': newMidi[1],'Position': newMidi[0],'Velocity': newMidi[2],"Length": newMidi[3]}
     df = pd.DataFrame(data = (d))
     df.to_csv(path_or_buf = path + "/"+ name +".csv", index=False)  
     print("Done writing to path.")
