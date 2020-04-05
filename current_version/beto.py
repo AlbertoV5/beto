@@ -28,6 +28,9 @@ def DefineInstructions():
 def Sequencial_ReferenceBar_to_AllBars(grid,referenceBar,allBars,inputSectionSelection,outputSections,info):
     outputBars, bannedBars = [],[]
     outputLengthInBars = range(0,(outputSections-1)*grid.size_inBars_section)
+    
+    if info.saveLogs == True:
+        util.ClearLogs(info.pathOutput)
 
     for i in outputLengthInBars:
         newBarData = an.LookForBestBar(allBars,inputSectionSelection,info.harmonicProgression,referenceBar,bannedBars,info,i)
@@ -57,6 +60,6 @@ def CreateNewMidi(BarList,grid,resolution,name,path,plotting,info):
         util.PlotPiece(newMidiFile[0],newMidiFile[1],plotting[1]+"/",plotting[2])
     util.WriteCSV(newMidiFile,name,path)
     if info.saveLogs == True:
-      util.SaveOutputData(BarList,path,"_allBars")
+        util.SaveOutputData(BarList,path,"_allBars")
    
     

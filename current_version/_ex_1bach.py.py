@@ -1,9 +1,8 @@
 """
 Python 3.7
-Re-Compose a Piece - Iteration 05
+Re-Compose a Piece - Iteration 06
 """
 import beto
-
 #-------------------------------------------------------#
 ##----------Example #1 Re Composing a Bach Piece--------#
 #-------------------------------------------------------#
@@ -42,7 +41,7 @@ ReCompose = beto.Sequencial_ReferenceBar_to_AllBars(grid,referenceBar,bars,input
 
 ##----------Visualize Data--------#
 #beto.PlotSnapsInBar(referenceBar,my_path)
-beto.PrintList(ReCompose,output_path)
+#beto.PrintList(ReCompose,output_path)
 
 ##----------Output--------#
 plotOutput = [True,plot_path,"Re-Composed"]

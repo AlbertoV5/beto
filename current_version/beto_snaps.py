@@ -84,8 +84,24 @@ def CompareAverageNoteData(snap1,snap2,value,criteria): #Returns a single digit 
     score = GetScoreAverages(avgSnap1,avgSnap2,criteria)
     return score
 
-def CompareNoteByNote(): #For Markov, return list or complex data
+def NormalizeList(snap1,snap2):
+    long = max(len(snap1), len(snap2))
+    normalizedList = []
+    for i in range(long):
+        if len(snap1) <= i:
+            normalizedList.append(snap1[i])
+        else:
+            normalizedList.append([ [0],[0],[0],[0] ])
+        if len(snap2) <= i:
+            normalizedList.append(snap2[i])
+        else:
+            normalizedList.append([ [0],[0],[0],[0] ])
+    return normalizedList
 
+def CompareNoteByNote(snap1,snap2): #For Markov, return list or complex data   
+    notesList  = NormalizeList(snap1,snap2)
+    
+    
     pass
 
 def CompareSnapsAverage(snap1,snap2,noteType,ratio,comparison):

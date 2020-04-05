@@ -101,12 +101,21 @@ def StoreCSV(path,resolution,plotOptions):
             
     return allMidiFiles
 
+def ClearLogs(path):
+    folder = path+"/savedlogs"
+    for file in os.listdir(folder):
+        try:
+            file_path = os.path.join(folder,file)
+            os.remove(file_path)
+        except:
+            print("Can't delete file.")
 
 def SaveOutputData(data,path,name):
+    folder = path+"/savedlogs"
     line = ""
     for i in data:
         line = line + str(i[0]) + "," + str(i[2]) + "\n"
-    f = open(path+"/savedlogs/"+name+".txt", "w+")
+    f = open(folder+"/"+name+".txt", "w+")
     f.write(line)
     f.close()
 
