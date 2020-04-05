@@ -1,6 +1,6 @@
 """
-Re-Compose a Piece
-Python 3.7.6
+Python 3.7
+Re-Compose a Piece - Iteration 05
 """
 import beto
 
@@ -17,6 +17,7 @@ plotInput = [True,plot_path,"Original",15360] #temp
 midiFiles = beto.ReadMidi(input_path,grid.resolution,plotInput)
 ##---------------------------#
 ##------------Setup----------#
+##---------------------------#
 bars = beto.GetSnapsInBars(midiFiles,grid)
 referenceBar = bars[0][0]
 inputSections = range(0,13)
@@ -26,20 +27,23 @@ instrumentEnvelopeRatio = ier = {"Attack":2,"Sustain":1}
 instructions = beto.DefineInstructions()
 ##----------Instructions--------#
 instructions.targetMidiData = "Pitch"
-instructions.selectionCriteria = "Highest"
 instructions.scoringMethod = "Average"
+instructions.midiDataComparison = "Ratio"
+instructions.selectionCriteria = "Closest"
 instructions.harmonicProgression = range(0,grid.size_inBars_section)
 instructions.NoteOnRatio = ier["Attack"]/(ier["Attack"]+ier["Sustain"])
 instructions.NoteSusRatio = ier["Sustain"]/(ier["Attack"]+ier["Sustain"])
+instructions.saveLogs = True
+instructions.pathOutput = output_path
 
 ##----------Execution--------#
-ReCompose = beto.Compare_ReferenceBar_to_AllBars(grid,referenceBar,bars,inputSections,outputSections,instructions)
+ReCompose = beto.Sequencial_ReferenceBar_to_AllBars(grid,referenceBar,bars,inputSections,outputSections,instructions)
 #MarkovData = beto.GetMarkovChains(grid,bars,sectionSelection,instruction)
 
 ##----------Visualize Data--------#
 #beto.PlotSnapsInBar(referenceBar,my_path)
-#beto.PrintList(MagicBarsList)
+beto.PrintList(ReCompose,output_path)
 
 ##----------Output--------#
 plotOutput = [True,plot_path,"Re-Composed"]
-beto.CreateNewMidi(ReCompose,grid,grid.resolution,"newmidi",output_path,plotOutput)
+beto.CreateNewMidi(ReCompose,grid,grid.resolution,"newmidi",output_path,plotOutput,instructions)

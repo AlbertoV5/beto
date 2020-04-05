@@ -101,6 +101,15 @@ def StoreCSV(path,resolution,plotOptions):
             
     return allMidiFiles
 
+
+def SaveOutputData(data,path,name):
+    line = ""
+    for i in data:
+        line = line + str(i[0]) + "," + str(i[2]) + "\n"
+    f = open(path+"/savedlogs/"+name+".txt", "w+")
+    f.write(line)
+    f.close()
+
 ##------- DATA VISUALIZATION FUNCTIONS ---------##
 
 def PlotPiece(yax,xax,path,name): 

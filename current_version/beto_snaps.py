@@ -61,7 +61,6 @@ def GetSnapsInBar(item,note):
 
 ##------- COMPARISON FUNCTIONS ---------##
 
-    
 def GetScoreAverages(avgSnap1,avgSnap2,criteria): #Percentage returns a 0 to 1 value and Ratio can go > 1
     if criteria == "Percentage":
         return util.Round(min([avgSnap1,avgSnap2])/max([avgSnap1,avgSnap2]),"ceil",4)
@@ -89,13 +88,13 @@ def CompareNoteByNote(): #For Markov, return list or complex data
 
     pass
 
-def CompareSnapsAverage(snap1,snap2,noteType,ratio):
+def CompareSnapsAverage(snap1,snap2,noteType,ratio,comparison):
     len1,len2 = float(len(snap1[noteType])),float(len(snap2[noteType]))
     if len1 > 0 and len2 > 0:
-        pos = CompareAmountOfNotes(len1,len2,"Percentage")
-        pitch = CompareAverageNoteData(snap1[noteType],snap2[noteType],0,"Percentage")
-        length = CompareAverageNoteData(snap1[noteType],snap2[noteType],2,"Percentage")
-        vel = CompareAverageNoteData(snap1[noteType],snap2[noteType],3,"Percentage")
+        pos = CompareAmountOfNotes(len1,len2,comparison)
+        pitch = CompareAverageNoteData(snap1[noteType],snap2[noteType],0,comparison)
+        length = CompareAverageNoteData(snap1[noteType],snap2[noteType],2,comparison)
+        vel = CompareAverageNoteData(snap1[noteType],snap2[noteType],3,comparison)
     elif len1 > 0 and len2 == 0:
         pos,vel,pitch,length = 0,0,0,0
     elif len2 > 0 and len1 == 0:
@@ -104,5 +103,8 @@ def CompareSnapsAverage(snap1,snap2,noteType,ratio):
         pos,vel,pitch,length = 1.0,1.0,1.0,1.0
     return pitch*ratio,pos*ratio,vel*ratio,length*ratio
 
-    
+
+
+
+
     

@@ -2,8 +2,6 @@
 Just Classes
 """
 
-##------- Classes ---------##
-
 class Midi():
     def __init__(self,v):
         self.pitch = v[0]
@@ -49,10 +47,13 @@ class AllSnapsScores():
         self.length = length
 
 class Instructions():
-    scoringMethod = "Average"
-    targetMidiData = "Pitch"
-    analysisCriteria = "Highest"
+    scoringMethod = ""
+    targetMidiData = ""
+    selectionCriteria = ""
+    midiDataComparison = ""
     harmonicProgression = range(16)
     noteOnRatio = 0.5
     noteSusRatio = 0.5
+    pathOutput = ""
+    saveLogs = True
        
