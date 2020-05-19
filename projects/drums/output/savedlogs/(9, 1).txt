@@ -1,0 +1,16 @@
+{'Notes On': [[36.0, 16.0, 1.759, 99]], 'Notes Sustain': []}
+{'Notes On': [], 'Notes Sustain': [[36.0, 16.0, 0.7590000000000003, 99]]}
+{'Notes On': [[42.0, 18.0, 0.971, 110]], 'Notes Sustain': []}
+{'Notes On': [], 'Notes Sustain': []}
+{'Notes On': [[38.0, 20.0, 1.963, 98]], 'Notes Sustain': []}
+{'Notes On': [], 'Notes Sustain': [[38.0, 20.0, 0.963000000000001, 98]]}
+{'Notes On': [[42.0, 22.0, 1.23, 109]], 'Notes Sustain': []}
+{'Notes On': [], 'Notes Sustain': [[42.0, 22.0, 0.23000000000000043, 109]]}
+{'Notes On': [[36.0, 24.0, 1.825, 105]], 'Notes Sustain': []}
+{'Notes On': [], 'Notes Sustain': [[36.0, 24.0, 0.8249999999999993, 105]]}
+{'Notes On': [[42.0, 26.0, 1.296, 107]], 'Notes Sustain': []}
+{'Notes On': [], 'Notes Sustain': [[42.0, 26.0, 0.2959999999999994, 107]]}
+{'Notes On': [[38.0, 28.0, 1.963, 107]], 'Notes Sustain': []}
+{'Notes On': [], 'Notes Sustain': [[38.0, 28.0, 0.963000000000001, 107]]}
+{'Notes On': [[42.0, 30.0, 1.125, 106]], 'Notes Sustain': []}
+{'Notes On': [], 'Notes Sustain': [[42.0, 30.0, 0.125, 106]]}
