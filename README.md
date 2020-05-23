@@ -8,3 +8,11 @@ Required:
 - Matplotlib
 - Pandas
 - Numpy
+
+What it does:
+
+- Read .csv that I exported from Reaper from MIDI files and then do simple math do get "compositional information" about the music. 
+
+To do:
+
+- Everything
